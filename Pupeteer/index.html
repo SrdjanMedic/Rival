@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Button Click Example</title>
+  </head>
+  <body>
+    <form>
+      <button id="myButton">Click me</button>
+    </form>
+    <script>
+      document.getElementById("myButton").addEventListener("click", async function() {
+        const puppeteer = require('puppeteer');
+        const fs = require('fs');
+
+        try {
+          const browser = await puppeteer.launch();
+          const page = await browser.newPage();
+
+          // Set the username and password
+          const username = 'DEVELOPER+doppiomalto@norival.com';
+          const password = 'NORIVAL#2023';
+
+          // Encode the username and password
+          const encodedUsername = encodeURIComponent(username);
+          const encodedPassword = encodeURIComponent(password);
+
+          // Navigate to the URL and pass the credentials in the URL
+          const url = `https://${encodedUsername}:${encodedPassword}@odata.ikentoo.com/odata/v2/Items`;
+          await page.goto(url);
+
+          // Retrieve XML data
+          const xmlData = await page.content();
+
+          // Save the XML data to a file
+          const filePath = 'output.txt';
+          await fs.promises.writeFile(filePath, xmlData, 'utf-8');
+          console.log(`XML file saved: ${filePath}`);
+
+          await browser.close();
+        } catch (error) {
+          console.error(error);
+        }
+      });
+    </script>
+  </body>
+</html>

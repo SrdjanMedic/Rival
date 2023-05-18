@@ -1,0 +1,27 @@
+const axios = require("axios");
+const fs = require("fs");
+
+describe("Authentication", () => {
+  it("should log in and retrieve XML data", () => {
+    const username = "DEVELOPER+doppiomalto@norival.com";
+    const password = "NORIVAL#2023";
+
+    cy.request({
+      method: "GET",
+      url: "https://odata.ikentoo.com/odata/v2/Items",
+      auth: {
+        username: username,
+        password: password,
+      },
+      responseType: "text", // Set the response type to 'text' to receive the XML as a string
+    }).then((response) => {
+      const xmlData = response.body;
+
+      // Save the XML data as a plain text file
+      const filePath = "C:\\output.txt";
+      cy.writeFile(filePath, xmlData, "utf-8").then(() => {
+        cy.log(`XML file saved: ${filePath}`);
+      });
+    });
+  });
+});

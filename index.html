@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Login Form</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <form class="login-form" onsubmit="return false;">
+        <h2>Get your data</h2>
+        <input type="text" placeholder="Username" id="username" required />
+        <input type="password" placeholder="Password" id="password" required />
+        <input
+          type="text"
+          placeholder="Business ID"
+          id="business-id"
+          required
+        />
+        <div id="status-message"></div>
+        <button
+          type="button"
+          id="run-authentication-button"
+          onclick="executeAuthenticationTest() "
+        >
+          Run Authentication Test
+        </button>
+        <div id="loading-container" style="display: none">
+          <div class="loader"></div>
+          <div class="waviy">
+            <span style="--i: 1">H</span>
+            <span style="--i: 2">a</span>
+            <span style="--i: 3">n</span>
+            <span style="--i: 4">g</span>
+            <span style="--i: 5">&nbsp</span>
+            <span style="--i: 6">t</span>
+            <span style="--i: 7">i</span>
+            <span style="--i: 8">g</span>
+            <span style="--i: 9">h</span>
+            <span style="--i: 10">t</span>
+            <span style="--i: 11">&nbsp</span>
+            <span style="--i: 12">w</span>
+            <span style="--i: 13">h</span>
+            <span style="--i: 14">i</span>
+            <span style="--i: 15">l</span>
+            <span style="--i: 16">e</span>
+            <span style="--i: 17">&nbsp</span>
+            <span style="--i: 18">w</span>
+            <span style="--i: 19">e</span>
+            <span style="--i: 20">&nbsp</span>
+            <span style="--i: 20">f</span>
+            <span style="--i: 21">i</span>
+            <span style="--i: 22">n</span>
+            <span style="--i: 23">d</span>
+            <span style="--i: 24">&nbsp</span>
+            <span style="--i: 25">y</span>
+            <span style="--i: 26">o</span>
+            <span style="--i: 27">u</span>
+            <span style="--i: 28">r</span>
+            <span style="--i: 29">&nbsp</span>
+            <span style="--i: 30">f</span>
+            <span style="--i: 31">i</span>
+            <span style="--i: 32">l</span>
+            <span style="--i: 33">e</span>
+          </div>
+        </div>
+
+        <div id="result-container" style="display: none">
+          <div id="image-container">
+            <img id="result-image" alt="Result Image" />
+          </div>
+          <p id="result-message"></p>
+          <a href="#" download id="download-button">Download</a>
+        </div>
+      </form>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/scripts/authentication.js"></script>
+    <script src="/scripts/download.js"></script>
+  </body>
+</html>
